@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Portfolio - Zafiro Estudio{% endblock %}
+{% block content %}
+
+<!-- ENCABEZADO -->
+<section class="relative text-center py-20 px-4 bg-transparent" data-aos="fade-down">
+  <div class="relative z-10">
+    <h1 class="text-4xl sm:text-5xl font-bold text-zinc-800 mb-4">Nuestro Portfolio</h1>
+    <p class="text-lg text-zinc-700 max-w-2xl mx-auto">Una muestra de algunos trabajos que hicimos con mucho amor y dedicación 💖</p>
+  </div>
+
+  <!-- Onda decorativa -->
+  <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+    <svg class="absolute top-0 w-full h-40 text-pink-200 opacity-40" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="currentColor" fill-opacity="1"
+        d="M0,64L48,80C96,96,192,128,288,149.3C384,171,480,181,576,176C672,171,768,149,864,144C960,139,1056,149,1152,138.7C1248,128,1344,96,1392,80L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
+      </path>
+    </svg>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="px-4 pb-20">
+  <div class="max-w-7xl mx-auto bg-white/30 backdrop-blur-xl border border-white/30 rounded-3xl shadow-xl p-10" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold text-zinc-800 text-center mb-10">Galería de Uñas y Pestañas</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {% for filename in [
+        'Uñas1.jfif', 'Pestañas1.jfif',
+        'Uñas2.jfif', 'Pestañas2.jfif',
+        'Uñas3.jfif', 'Pestañas3.jfif',
+        'Uñas4.jfif', 'Pestañas4.jfif',
+        'Uñas5.jfif', 'Uñas6.jfif',
+        'Uñas7.jfif', 'Uñas8.jfif',
+        'Uñas9.jfif'
+      ] %}
+        <img src="{{ url_for('static', filename='images/' + filename) }}"
+             class="rounded-xl shadow-md hover:scale-105 transition duration-300 ease-in-out object-cover w-full h-64"
+             alt="Trabajo de Zafiro Estudio" data-aos="zoom-in">
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

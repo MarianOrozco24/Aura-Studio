@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Zafiro Estudio{% endblock %}</title>
+  <meta name="description" content="Zafiro Estudio: uñas, cejas, pestañas y depilación definitiva. Zafiro Nails y Zoey Lashes en un solo lugar." />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Alpine -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/@tabler/icons-webfont@2.34.0/tabler-icons.min.css" rel="stylesheet" />
+
+  <style>
+    html, body {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: transparent;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .background-animated {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-45deg, #f1b7d8, #8760b1, #4c30bd, #22014e);
+      background-size: 400% 400%;
+      animation: gradientMove 8s ease infinite;
+      z-index: -20;
+      opacity: 0.4;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .svg-deco-top {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -10;
+      opacity: 0.2;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+
+<body class="text-zinc-800 bg-transparent relative w-full min-h-screen overflow-x-hidden">
+
+  <!-- Fondo animado -->
+  <div class="background-animated"></div>
+
+  <!-- SVG decorativo superior -->
+  <svg class="svg-deco-top" viewBox="0 0 1440 320">
+    <path fill="#f5d0fe" fill-opacity="1"
+      d="M0,96L60,122.7C120,149,240,203,360,186.7C480,171,600,85,720,80C840,75,960,149,1080,176C1200,203,1320,181,1380,170.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+    </path>
+  </svg>
+
+  <!-- Navbar -->
+  {% include 'includes/navbar.html' %}
+
+  <!-- Contenido -->
+  <main class="relative z-10">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  {% include 'includes/footer.html' %}
+
+  <!-- AOS Init -->
+  <script>AOS.init();</script>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/542613868308" target="_blank"
+     class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 p-3 rounded-full shadow-lg transition duration-300">
+    <img src="{{ url_for('static', filename='images/whatsapp.svg') }}" alt="WhatsApp" class="w-6 h-6">
+  </a>
+</body>
+</html>

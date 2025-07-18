@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Servicios - Zafiro Estudio{% endblock %}
+{% block content %}
+
+<!-- ENCABEZADO CON ONDA -->
+<section class="relative text-center py-20 px-4 bg-transparent" data-aos="fade-down">
+  <div class="relative z-10">
+    <h1 class="text-4xl sm:text-5xl font-bold text-zinc-800 mb-4">Nuestros Servicios</h1>
+    <p class="text-lg text-zinc-700 max-w-2xl mx-auto">Conocé todas las opciones que tenemos para vos, tanto en uñas como en cejas, pestañas y depilación definitiva ✨</p>
+  </div>
+
+  <!-- Onda decorativa -->
+  <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+    <svg class="absolute top-0 w-full h-40 text-pink-200 opacity-40" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="currentColor" fill-opacity="1"
+        d="M0,96L60,122.7C120,149,240,203,360,186.7C480,171,600,85,720,80C840,75,960,149,1080,176C1200,203,1320,181,1380,170.7L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+      </path>
+    </svg>
+  </div>
+</section>
+
+<!-- SERVICIOS EN GRID -->
+<section class="px-6 pb-20">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
+
+    <!-- ZAFIRO NAILS -->
+    <div class="bg-white/40 backdrop-blur-xl border border-white/30 shadow-xl rounded-3xl p-10" data-aos="fade-right">
+      <h2 class="text-3xl font-semibold text-indigo-600 mb-6 flex items-center gap-2">Zafiro Nails <span>📝</span></h2>
+
+      <ul class="space-y-4 text-zinc-700 text-sm">
+        <li><span class="font-semibold text-zinc-900">💅 Esculpidas en Acrílico (2hs):</span> Pack Completo $25.000 / Pack Básico $22.000</li>
+        <li><span class="font-semibold text-zinc-900">✨ Kapping Acrílico (1:30hs):</span> $19.000 (incluye ambos packs)</li>
+        <li><span class="font-semibold text-zinc-900">🎨 Esmaltado semipermanente con nivelación (1hs):</span> $15.000 (incluye ambos packs)</li>
+        <li><span class="font-semibold text-zinc-900">🛠 Mantenimiento:</span> $17.000 (para Kapping y Esculpidas)</li>
+      </ul>
+
+      <div class="mt-6">
+        <h3 class="text-indigo-700 font-bold mb-2">💜 PACK BÁSICO</h3>
+        <p class="text-sm text-zinc-600">Incluye esculpidas hasta largo número 2, francesa o color liso.</p>
+
+        <h3 class="text-indigo-700 font-bold mt-4 mb-2">💙 PACK COMPLETO</h3>
+        <p class="text-sm text-zinc-600">Incluye todos los diseños: pigmentos neón, cat eye, babyboomer, velvet, aurora, mármol, espejo, blooming, dibujos a mano alzada, cristales y más.</p>
+      </div>
+    </div>
+
+    <!-- ZOEY LASHES -->
+    <div class="bg-white/40 backdrop-blur-xl border border-white/30 shadow-xl rounded-3xl p-10" data-aos="fade-left">
+      <h2 class="text-3xl font-semibold text-indigo-600 mb-6 flex items-center gap-2">Zoey Lashes <span>🌟</span></h2>
+
+      <ul class="space-y-3 text-zinc-700 text-sm">
+        <li>🌸 Perfilado de cejas</li>
+        <li>🌿 Laminado de cejas</li>
+        <li>👁️ Extensiones pelo por pelo</li>
+        <li>✨ Lifting de pestañas</li>
+        <li>🔦 Depilación definitiva láser</li>
+      </ul>
+
+      <p class="text-sm text-zinc-700 mt-6">📥 Turnos al WhatsApp: <a href="https://wa.me/542613868308" target="_blank" class="text-indigo-600 hover:underline">261 386-8308</a></p>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

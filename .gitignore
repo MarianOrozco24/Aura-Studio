@@ -1,0 +1,101 @@
+# =====================
+# PYTHON / FLASK SETUP
+# =====================
+
+# Bytecode y caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos temporales
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+*.cache
+*.tmp
+
+# Instancia Flask
+instance/
+.env
+.env.*
+
+# Archivos de configuración generados
+*.coverage
+coverage.*
+.tox/
+nosetests.xml
+test*.xml
+*.pylint.d
+
+# =====================
+# VIRTUAL ENVIRONMENTS
+# =====================
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+# =====================
+# IDEs y editores
+# =====================
+
+# VSCode
+.vscode/
+.history/
+
+# PyCharm
+.idea/
+*.iml
+
+# =====================
+# SISTEMAS OPERATIVOS
+# =====================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# =====================
+# GIT
+# =====================
+
+# Archivos de Git
+.git/
+.gitignore~
+
+# =====================
+# BASE DE DATOS / MIGRACIONES
+# =====================
+
+migrations/
+*.sql
+*.bak
+*.tar.gz
+*.dump
+
+# =====================
+# NPM / NODE (por si usás JS)
+# =====================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
