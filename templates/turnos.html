@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}Reservá tu Turno - Zafiro Estudio{% endblock %}
+{% block content %}
+
+<section class="relative text-center py-20 px-4 bg-transparent" data-aos="fade-down">
+  <div class="relative z-10">
+    <h1 class="text-4xl sm:text-5xl font-bold text-zinc-800 mb-4">Reservá tu Turno</h1>
+    <p class="text-lg text-zinc-700 max-w-2xl mx-auto">
+      Elegí el servicio que querés y coordiná el día y la hora para venir a mimarte 💖
+    </p>
+  </div>
+</section>
+
+<section class="px-4 pb-24 mt-[-30px]">
+  <div class="max-w-xl mx-auto bg-white/30 backdrop-blur-xl border border-white/30 rounded-3xl shadow-xl p-10" data-aos="zoom-in">
+    <form id="form-turno" class="space-y-6">
+      <div>
+        <label for="nombre" class="block text-sm font-medium text-zinc-800 mb-1">Nombre</label>
+        <input type="text" name="nombre" id="nombre" required
+          class="w-full px-4 py-3 rounded-lg border border-zinc-300 bg-white/70 shadow-inner">
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-zinc-800 mb-1">Email</label>
+        <input type="email" name="email" id="email" required
+          class="w-full px-4 py-3 rounded-lg border border-zinc-300 bg-white/70 shadow-inner">
+      </div>
+
+      <div>
+        <label for="servicio" class="block text-sm font-medium text-zinc-800 mb-1">Servicio</label>
+        <select name="servicio" id="servicio" required
+          class="w-full px-4 py-3 rounded-lg border border-zinc-300 bg-white/70 shadow-inner">
+          <option value="">Seleccioná uno</option>
+          <option>Esculpidas acrílicas</option>
+          <option>Kapping</option>
+          <option>Esmaltado semipermanente</option>
+          <option>Extensiones de pestañas</option>
+          <option>Lifting de cejas</option>
+          <option>Depilación definitiva</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="fecha" class="block text-sm font-medium text-zinc-800 mb-1">Fecha y Hora</label>
+        <input type="datetime-local" name="fecha" id="fecha" required
+          class="w-full px-4 py-3 rounded-lg border border-zinc-300 bg-white/70 shadow-inner">
+      </div>
+
+      <div class="text-center pt-4">
+        <button type="submit"
+          class="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-full shadow-md transition">
+          Reservar turno
+        </button>
+      </div>
+
+      <p id="mensaje-exito" class="text-green-700 font-semibold mt-4 hidden">✔️ Turno reservado con éxito</p>
+      <p id="mensaje-error" class="text-red-600 font-semibold mt-4 hidden">❌ Ocurrió un error. Intentá de nuevo.</p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("form-turno");
+  const mensajeExito = document.getElementById("mensaje-exito");
+  const mensajeError = document.getElementById("mensaje-error");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    mensajeExito.classList.add("hidden");
+    mensajeError.classList.add("hidden");
+
+    const submitButton = form.querySelector("button[type='submit']");
+    submitButton.disabled = true;
+    submitButton.textContent = "Redirigiendo a MercadoPago...";
+
+    const data = {
+      nombre: document.getElementById("nombre").value,
+      email: document.getElementById("email").value,
+      servicio: document.getElementById("servicio").value,
+      fecha: document.getElementById("fecha").value
+    };
+
+    try {
+      const res = await fetch("/api/pagos/crear", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const json = await res.json();
+
+      if (res.ok && json.init_point) {
+        window.location.href = json.init_point;
+      } else {
+        throw new Error("No se pudo iniciar el pago");
+      }
+    } catch (err) {
+      mensajeError.textContent = "❌ No se pudo conectar con MercadoPago. Intentá de nuevo.";
+      mensajeError.classList.remove("hidden");
+      submitButton.disabled = false;
+      submitButton.textContent = "Reservar turno";
+    }
+  });
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'backoffice/base_backoffice.html' %}
+{% block page_title %}Recibos{% endblock %}
+{% block page_subtitle %}<p class="text-sm text-zinc-500 mt-2">Historial y estados de pago</p>{% endblock %}
+
+
+{% block content %}
+<div class="glass p-6">
+<div class="overflow-x-auto">
+<table class="min-w-full text-sm">
+<thead class="text-left text-zinc-500">
+<tr>
+<th class="py-2 pr-6">Fecha</th>
+<th class="py-2 pr-6">Categoría</th>
+<th class="py-2 pr-6">Estado</th>
+<th class="py-2 pr-6">Monto</th>
+<th class="py-2 pr-6 text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="text-zinc-800">
+{% for r in receipts %}
+<tr class="border-t border-white/60">
+<td class="py-2 pr-6">{{ r.payment_date.strftime('%d/%m/%Y') if r.payment_date else '-' }}</td>
+<td class="py-2 pr-6">{{ r.category.name if r.category else '-' }}</td>
+<td class="py-2 pr-6">
+<span class="px-2.5 py-0.5 rounded-lg text-xs {{ 'bg-emerald-100 text-emerald-700' if r.status=='pagado' else 'bg-amber-100 text-amber-700' }}">{{ r.status|capitalize }}</span>
+</td>
+<td class="py-2 pr-6">${{ '%.0f'|format(r.amount) }}</td>
+<td class="py-2 pr-0 text-right space-x-2">
+<a href="{{ url_for('backoffice.receipts_view', uuid=r.uuid_receipt) }}" class="inline-block rounded-xl bg-white/80 px-3 py-1 hover:bg-white">Ver</a>
+<form method="POST" action="{{ url_for('backoffice.receipts_mark_paid', uuid=r.uuid_receipt) }}" class="inline">
+<button class="rounded-xl bg-white/80 px-3 py-1 hover:bg-white">Marcar pagado</button>
+</form>
+</td>
+</tr>
+{% else %}
+<tr><td colspan="5" class="py-4 text-zinc-500">Sin registros</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+{% endblock %}

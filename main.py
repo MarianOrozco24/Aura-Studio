@@ -33,6 +33,11 @@ def servicios():
 def portfolio():
     return render_template("portfolio.html")
 
+@app.route("/turnos")
+def turnos():
+    return render_template("turnos.html")
+
+
 @app.route("/contacto", methods=["GET", "POST"])
 def contacto():
     if request.method == "POST":
@@ -53,6 +58,34 @@ def contacto():
         return redirect("/contacto")
 
     return render_template("contacto.html")
+
+@app.route("/turno-exitoso")
+def turno_exitoso():
+    from zafiro_backend.models import Turno
+    from zafiro_backend.config import db
+    from datetime import datetime
+
+    nombre = request.args.get("nombre")
+    email = request.args.get("email")
+    servicio = request.args.get("servicio")
+    monto = float(request.args.get("monto"))
+
+    profesional = "Zafiro Nails" if "uña" in servicio.lower() or "kapping" in servicio.lower() else "Zoey Lashes"
+
+    turno = Turno(
+        nombre=nombre,
+        email=email,
+        servicio=servicio,
+        profesional=profesional,
+        monto_abonado=monto,
+        fecha=datetime.utcnow()  # o podés pasar fecha como parámetro
+    )
+    db.session.add(turno)
+    db.session.commit()
+
+    return render_template("turno_exitoso.html", nombre=nombre, servicio=servicio)
+
+
 
 if __name__=='__main__':
     Flask.run(app)

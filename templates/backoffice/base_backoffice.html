@@ -1,0 +1,65 @@
+<!doctype html>
+theme: {
+extend: {
+colors: {
+zfIndigo: { DEFAULT: '#4F46E5' },
+zfPink: { DEFAULT: '#EC4899' },
+}
+}
+}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html, body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
+.glass {
+background: rgba(255,255,255,0.5);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(255,255,255,0.35);
+border-radius: 1.25rem; /* 2xl */
+box-shadow: 0 10px 30px rgba(79,70,229,0.08), 0 6px 18px rgba(236,72,153,0.05);
+}
+.brand-gradient { background: linear-gradient(180deg, #EEF2FF 0%, #FCE7F3 100%); }
+</style>
+</head>
+<body class="min-h-screen brand-gradient">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+{% include 'backoffice/_sidebar.html' %}
+
+
+<!-- Main content area -->
+<div class="flex-1 flex flex-col">
+{% include 'backoffice/_topbar.html' %}
+
+
+<main class="p-6 md:p-10 space-y-6">
+{% block header %}
+<div class="glass p-6 md:p-8">
+<h1 class="text-2xl md:text-3xl font-semibold text-zinc-800">{% block page_title %}Panel{% endblock %}</h1>
+{% block page_subtitle %}{% endblock %}
+</div>
+{% endblock %}
+
+
+{% block content %}{% endblock %}
+</main>
+</div>
+</div>
+
+
+<script>
+// Toggle sidebar móvil
+const sidebar = () => {
+const el = document.getElementById('zf-sidebar');
+if (!el) return;
+el.classList.toggle('-translate-x-full');
+}
+window.toggleSidebar = sidebar;
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

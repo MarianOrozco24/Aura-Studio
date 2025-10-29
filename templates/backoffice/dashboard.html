@@ -1,0 +1,75 @@
+{% extends 'backoffice/base_backoffice.html' %}
+{% block page_title %}Dashboard{% endblock %}
+{% block page_subtitle %}
+<p class="text-sm text-zinc-500 mt-2">Resumen de actividad y accesos rápidos</p>
+{% endblock %}
+
+
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+<!-- Cards KPIs -->
+<div class="glass p-6">
+<p class="text-sm text-zinc-500">Servicios activos</p>
+<p class="text-3xl font-semibold text-zinc-800 mt-2">{{ kpis.services or 0 }}</p>
+</div>
+<div class="glass p-6">
+<p class="text-sm text-zinc-500">Categorías</p>
+<p class="text-3xl font-semibold text-zinc-800 mt-2">{{ kpis.categories or 0 }}</p>
+</div>
+<div class="glass p-6">
+<p class="text-sm text-zinc-500">Recibos (mes)</p>
+<p class="text-3xl font-semibold text-zinc-800 mt-2">{{ kpis.receipts_month or 0 }}</p>
+</div>
+<div class="glass p-6">
+<p class="text-sm text-zinc-500">Ingresos ARS (mes)</p>
+<p class="text-3xl font-semibold text-zinc-800 mt-2">{{ kpis.revenue_month or 0 | int }}</p>
+</div>
+</div>
+
+
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<div class="xl:col-span-2 glass p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-zinc-800">Últimos recibos</h3>
+<a href="{{ url_for('backoffice.receipts') }}" class="text-sm text-zfIndigo hover:underline">Ver todos</a>
+</div>
+<div class="overflow-x-auto">
+<table class="min-w-full text-sm">
+<thead class="text-left text-zinc-500">
+<tr>
+<th class="py-2 pr-6">Fecha</th>
+<th class="py-2 pr-6">Categoría</th>
+<th class="py-2 pr-6">Estado</th>
+<th class="py-2 pr-6">Monto</th>
+</tr>
+</thead>
+<tbody class="text-zinc-800">
+{% for r in last_receipts %}
+<tr class="border-t border-white/60">
+<td class="py-2 pr-6">{{ r.payment_date.strftime('%d/%m/%Y') if r.payment_date else '-' }}</td>
+<td class="py-2 pr-6">{{ r.category.name if r.category else '-' }}</td>
+<td class="py-2 pr-6">
+<span class="px-2.5 py-0.5 rounded-lg text-xs {{ 'bg-emerald-100 text-emerald-700' if r.status=='pagado' else 'bg-amber-100 text-amber-700' }}">{{ r.status|capitalize }}</span>
+</td>
+<td class="py-2 pr-6">${{ '%.0f'|format(r.amount) }}</td>
+</tr>
+{% else %}
+<tr><td colspan="4" class="py-4 text-zinc-500">Sin registros</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div class="glass p-6">
+<h3 class="text-lg font-semibold text-zinc-800 mb-4">Accesos rápidos</h3>
+<div class="grid grid-cols-2 gap-3">
+<a href="{{ url_for('backoffice.services_new') }}" class="rounded-xl bg-white/80 px-4 py-3 text-center hover:bg-white">➕ Nuevo servicio</a>
+<a href="{{ url_for('backoffice.categories') }}" class="rounded-xl bg-white/80 px-4 py-3 text-center hover:bg-white">🏷️ Categorías</a>
+<a href="{{ url_for('backoffice.receipts') }}" class="rounded-xl bg-white/80 px-4 py-3 text-center hover:bg-white">🧾 Recibos</a>
+<a href="{{ url_for('backoffice.users') }}" class="rounded-xl bg-white/80 px-4 py-3 text-center hover:bg-white">👥 Usuarios</a>
+</div>
+</div>
+</div>
+{% endblock %}

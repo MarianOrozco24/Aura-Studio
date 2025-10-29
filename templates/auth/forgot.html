@@ -1,0 +1,23 @@
+{% extends 'backoffice/base_backoffice.html' %}
+{% block header %}{% endblock %}
+{% block content %}
+<section class="max-w-md mx-auto">
+<div class="glass p-8">
+<h1 class="text-2xl font-semibold text-zinc-800 mb-1">Recuperar contraseña</h1>
+<p class="text-sm text-zinc-500 mb-6">Te enviaremos un enlace a tu correo</p>
+
+
+<form method="POST" action="{{ url_for('auth.forgot') }}" class="space-y-4">
+{{ form.csrf_token if form and form.csrf_token }}
+<div>
+<label class="text-sm text-zinc-700">Email</label>
+<input type="email" name="email" required class="mt-1 w-full rounded-xl border border-white/50 bg-white/70 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-zfIndigo/40" placeholder="nombre@correo.com" />
+</div>
+<button class="w-full rounded-xl bg-zfIndigo text-white py-2.5 hover:opacity-90 transition">Enviar enlace</button>
+</form>
+
+
+<p class="text-center text-sm text-zinc-600 mt-4"><a href="{{ url_for('auth.login') }}" class="text-zfIndigo hover:underline">Volver al login</a></p>
+</div>
+</section>
+{% endblock %}

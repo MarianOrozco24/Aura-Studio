@@ -1,0 +1,33 @@
+{% extends 'backoffice/base_backoffice.html' %}
+{% block page_title %}Categorías{% endblock %}
+{% block page_subtitle %}<p class="text-sm text-zinc-500 mt-2">Crear y administrar categorías</p>{% endblock %}
+
+
+{% block content %}
+<div class="glass p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-semibold text-zinc-800">Listado</h3>
+<form method="POST" action="{{ url_for('backoffice.categories_new') }}" class="flex gap-2">
+<input name="name" placeholder="Nueva categoría" required class="rounded-xl border border-white/50 bg-white/70 px-4 py-2" />
+<button class="rounded-xl bg-zfIndigo text-white px-4 py-2 hover:opacity-90">Agregar</button>
+</form>
+</div>
+
+
+<ul class="divide-y divide-white/60">
+{% for c in categories %}
+<li class="py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-xl bg-white/80 grid place-items-center">🏷️</span>
+<span class="text-zinc-800">{{ c.name }}</span>
+</div>
+<form method="POST" action="{{ url_for('backoffice.categories_delete', uuid=c.uuid_categoria) }}">
+<button class="rounded-xl bg-white/80 px-3 py-1 hover:bg-white">Eliminar</button>
+</form>
+</li>
+{% else %}
+<li class="py-4 text-zinc-500">No hay categorías.</li>
+{% endfor %}
+</ul>
+</div>
+{% endblock %}

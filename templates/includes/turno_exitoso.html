@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}¡Turno Confirmado!{% endblock %}
+{% block content %}
+<section class="text-center py-20">
+  <h1 class="text-4xl font-bold text-green-600 mb-4">🎉 ¡Gracias {{ nombre }}!</h1>
+  <p class="text-lg">Tu turno de <strong>{{ servicio }}</strong> fue confirmado correctamente.</p>
+  <a href="/" class="inline-block mt-8 bg-indigo-500 text-white px-6 py-3 rounded-full shadow-md">Volver al inicio</a>
+</section>
+{% endblock %}

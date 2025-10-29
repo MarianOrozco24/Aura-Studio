@@ -33,4 +33,6 @@ def crear_contacto():
     db.session.add(contacto)
     db.session.commit()
 
+    
+
     return jsonify({"message": "Mensaje recibido correctamente"}), 201
