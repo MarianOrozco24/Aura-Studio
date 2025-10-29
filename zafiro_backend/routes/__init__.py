@@ -5,6 +5,7 @@ from .pagos import bp_pagos
 from .users import signup_bp
 from .service import bp_service
 from .category import category_bp
+from .utils import utils_bp
 
 def register_routes(app: Flask):
     app.register_blueprint(bp_contactos)
@@ -13,3 +14,4 @@ def register_routes(app: Flask):
     app.register_blueprint(bp_service)
     app.register_blueprint(signup_bp)
     app.register_blueprint(category_bp)
+    app.register_blueprint(utils_bp)

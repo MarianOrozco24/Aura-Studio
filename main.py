@@ -3,7 +3,7 @@ from zafiro_backend.config import init_db
 from zafiro_backend.models import Contact  # desde __init__.py
 from datetime import datetime
 from zafiro_backend.routes import register_routes
-
+from zafiro_backend.routes.utils import listar_rutas_flask
 
 app = Flask(__name__)
 app.secret_key = "clave_super_secreta"
