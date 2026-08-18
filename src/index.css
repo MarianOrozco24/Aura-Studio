@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta extraída del isologo: lavanda -> malva sobre fondo casi negro */
+  --color-aura-bg: #0b0a10;
+  --color-aura-surface: #151320;
+  --color-aura-surface-2: #1c1926;
+  --color-aura-lilac: #b7a4e0;
+  --color-aura-lilac-light: #d9cdf0;
+  --color-aura-mauve: #cfa3bd;
+  --color-aura-mauve-dark: #a97f9c;
+  --color-aura-cream: #f6f1ea;
+  --color-aura-ring: rgba(246, 241, 234, 0.16);
+
+  --font-display: "Marcellus", "Cormorant Garamond", serif;
+  --font-sans: "Jost", "Segoe UI", sans-serif;
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-spin-slow: spin 16s linear infinite;
+  --animate-shimmer: shimmer 2.6s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-aura-bg);
+  color: var(--color-aura-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-aura-lilac);
+  color: var(--color-aura-bg);
+}
+
+/* Scrollbar sutil acorde a la paleta */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-aura-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-aura-lilac), var(--color-aura-mauve));
+  border-radius: 999px;
+}
+
+.text-gradient-aura {
+  background-image: linear-gradient(135deg, var(--color-aura-lilac-light), var(--color-aura-mauve));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-aura {
+  background-image: linear-gradient(135deg, var(--color-aura-lilac) 0%, var(--color-aura-mauve) 100%);
+}
+
+.bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
