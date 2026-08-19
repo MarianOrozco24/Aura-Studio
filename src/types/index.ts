@@ -2,7 +2,7 @@
 // Se mantienen desacoplados del origen de datos (hoy hardcodeado en /data,
 // mañana una API) para que reemplazar la fuente no requiera tocar los componentes.
 
-export type ServiceCategoryId = "pestanas" | "cejas" | "depilacion" | "hifu";
+export type ServiceCategoryId = "pestanas" | "cejas" | "limpieza-facial" | "depilacion" | "hifu";
 
 export interface Service {
   id: string;
@@ -10,7 +10,6 @@ export interface Service {
   name: string;
   shortDescription: string;
   description: string;
-  duration: string;
   priceFrom: number;
   benefits: string[];
 }

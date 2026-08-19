@@ -6,7 +6,7 @@ export const siteInfo: SiteInfo = {
   whatsappNumber: "5492613868308",
   instagramHandle: "@aura.studio.estetica",
   instagramUrl: "https://instagram.com/aura.studio.estetica",
-  address: "Pje. Bufano 125, San Rafael, Mendoza",
+  address: "Alsina 66, San Rafael, Mendoza",
   hours: [
     { day: "Lunes a viernes", hours: "10:00 – 19:00" },
     { day: "Sábados", hours: "10:00 – 14:00" },
