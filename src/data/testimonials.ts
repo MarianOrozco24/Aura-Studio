@@ -1,44 +1,63 @@
 import type { Testimonial } from "../types";
 
+// Testimonios actualizados acordes a los servicios vigentes del catálogo
+// (Pestañas, Cejas, Limpieza facial, Depilación definitiva y HIFU/Liposonix).
 export const testimonials: Testimonial[] = [
   {
     id: "t1",
     name: "Julieta R.",
-    service: "Volumen ruso",
+    service: "Combo: Lifting + Perfilado y Laminado",
     quote:
-      "Nunca me habían hecho un volumen tan prolijo. Se nota el mimo en cada detalle y el resultado duró más de un mes.",
+      "Me hice el combo completo para la mirada y el cambio fue increíble. Pestañas curvadas y cejas peinadas con un acabado hiper natural.",
     rating: 5,
   },
   {
     id: "t2",
-    name: "Camila S.",
-    service: "Laminado de cejas",
+    name: "Mariana B.",
+    service: "HIFU facial completo",
     quote:
-      "Mis cejas eran mi complejo y ahora las amo. El equipo te asesora con una honestidad que se agradece muchísimo.",
+      "Buscaba un lifting no invasivo y el HIFU superó mis expectativas. Note mayor firmeza en el óvalo facial de forma progresiva y sin cirugía.",
     rating: 5,
   },
   {
     id: "t3",
     name: "Ailén G.",
-    service: "Depilación definitiva",
+    service: "Depilación definitiva (Combo 3 zonas medias)",
     quote:
-      "Empecé con axilas y ya voy por piernas completas. Explican todo el proceso y las sesiones se sienten súper cuidadas.",
+      "La tecnología Soprano Ice Platinum es indolora y el vello encarnado desapareció casi desde la tercera sesión. Súper recomendado.",
     rating: 5,
   },
   {
     id: "t4",
-    name: "Rocío M.",
-    service: "Lifting de pestañas",
+    name: "Carolina T.",
+    service: "Limpieza facial + Exfoliación e Hidratación",
     quote:
-      "El lugar es hermoso, muy prolijo, y el lifting me dejó una mirada increíble sin necesidad de extensiones.",
+      "La limpieza profunda con exfoliación e hidratación dejó mi piel suave, luminosa y renovada. La atención del equipo es súper profesional.",
     rating: 5,
   },
   {
     id: "t5",
-    name: "Sofía D.",
-    service: "Diseño de cejas",
+    name: "Martín P.",
+    service: "Combo HIFU y Liposonix abdominal",
     quote:
-      "Aura Studio tiene una atención personalizada que no encontré en otro lado. Siempre salgo mejor de lo que esperaba.",
+      "Excelente experiencia. Logré reducir flacidez y grasa localizada en el abdomen sin tiempo de recuperación ni tratamientos dolorosos.",
+    rating: 5,
+  },
+  {
+    id: "t6",
+    name: "Camila S.",
+    service: "Combo: Perfilado + Laminado de cejas",
+    quote:
+      "Mis cejas eran rebeldes y poco pobladas. Con el perfilado y laminado lograron darles simetría y volumen respetando mis rasgos.",
+    rating: 5,
+  },
+  {
+    id: "t7",
+    name: "Rocío M.",
+    service: "Extensión de pestañas (clásicas)",
+    quote:
+      "Buscaba un efecto discreto para todos los días. Las extensiones clásicas son livianas, cuidan mi pestaña natural y duran semanas.",
     rating: 5,
   },
 ];
+

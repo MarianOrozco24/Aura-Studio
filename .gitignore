@@ -40,3 +40,7 @@ Desktop.ini
 Instagram*.html
 Instagram*.pdf
 *_files/
+
+# Contexto IDE
+.antigravity
+
